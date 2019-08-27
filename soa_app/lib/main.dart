@@ -18,7 +18,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Projeto SOA"),
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: Colors.deepPurpleAccent,
         centerTitle: true,
       ),
     );
