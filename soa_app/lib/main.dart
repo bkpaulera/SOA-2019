@@ -5,18 +5,18 @@ import 'package:soa_app/routes/routes_path.dart';
 
 void main(){
   runApp(MaterialApp(
-    initialRoute: '/',
+    initialRoute: LoginMainView,
     onGenerateRoute: RouterGenerator.generateRoute,
-    home: Home(),
+    home: HomeMain(),
   ));
 }
 
-class Home extends StatefulWidget {
+class HomeMain extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _HomeMainState createState() => _HomeMainState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeMainState extends State<HomeMain> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

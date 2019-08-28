@@ -14,14 +14,17 @@ class _LoginState extends State<Login> {
       appBar: AppBar(
         title: Text("Login"),
         backgroundColor: Colors.deepPurpleAccent,),
-        body: Center(
-          child: RaisedButton(onPressed: () {
-            //Navigator.of(context).pushNamed(HomeMainView);
-            Navigator.pop(context);
-          },
-            child: Text('Go to Home'), 
+        body:Center(
+          child: Center(
+            child: Column(
+            children: <Widget>[
+              RaisedButton(onPressed: () {Navigator.of(context).pushNamed(HomeView);},child: Text('Login'),),
+              RaisedButton(onPressed: () {Navigator.of(context).pushNamed(LoginPasswordView);},child: Text('Esqueceu s Senha'),),
+              RaisedButton(onPressed: () {Navigator.of(context).pushNamed(LoginRegisterView);},child: Text('Cadastrar'),)
+            ],
           ),
-        ),
+          )
+        )
     );
   }
 }
