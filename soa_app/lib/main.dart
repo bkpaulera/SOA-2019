@@ -1,8 +1,12 @@
 
 import 'package:flutter/material.dart';
+import 'package:soa_app/routes.dart';
+import 'package:soa_app/routes/routes_path.dart';
 
 void main(){
   runApp(MaterialApp(
+    initialRoute: '/',
+    onGenerateRoute: RouterGenerator.generateRoute,
     home: Home(),
   ));
 }
@@ -20,6 +24,12 @@ class _HomeState extends State<Home> {
         title: Text("Projeto SOA"),
         backgroundColor: Colors.deepPurpleAccent,
         centerTitle: true,
+      ),
+      body: Center(
+        child: RaisedButton(onPressed: () {
+          Navigator.of(context).pushNamed(LoginMainView);
+        },
+        child: Text('Go to Login'),),
       ),
     );
   }
