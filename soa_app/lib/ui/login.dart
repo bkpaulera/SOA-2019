@@ -11,38 +11,18 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar: AppBar(
-      //  title: Text("Login"),
-      // backgroundColor: Colors.deepPurpleAccent,),
+        appBar: AppBar(
+        title: Text("Login"),
+        backgroundColor: Colors.deepPurpleAccent,),
         body: Container(
-          //padding: EdgeInsets.all(10),
+          padding: EdgeInsets.all(10),
           child: Center(
             child: Column(
-              //crossAxisAlignment: CrossAxisAlignment.stretch,
-              //mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height/2.5,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Color(0xFFf45d27),
-                      Color(0xFFf5851f),
-                    ]
-                  ),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(10),
-                    bottomRight: Radius.circular(10)
-                  ),
-              ),
-          ),
-          
-             Container(
-              
-                child: TextFormField(
+
+                TextFormField(
                 autofocus: true,
                 keyboardType: TextInputType.emailAddress,
                 style: new TextStyle(color: Colors.deepPurpleAccent, fontSize: 15),
@@ -62,9 +42,6 @@ class _LoginState extends State<Login> {
                   labelStyle: TextStyle(color: Colors.deepPurpleAccent),
                 ),
               ),
-            ),
-
-             Container (
 
                RaisedButton(
                 onPressed: () {
@@ -84,7 +61,6 @@ class _LoginState extends State<Login> {
                 },
                 child: Text('Cadastrar'),
                 ),
-             ),
             ],
             ),
           ),
