@@ -10,6 +10,7 @@ import 'package:soa_app/ui/login/login_password.dart';
 import 'package:soa_app/ui/login/login_register.dart';
 import 'package:soa_app/ui/profile/config.dart';
 import 'package:soa_app/ui/profile/info_user.dart';
+import 'package:soa_app/ui/search/card.dart';
 import 'package:soa_app/ui/search/search.dart';
 
 class RouterGenerator {
@@ -43,6 +44,8 @@ class RouterGenerator {
         return MaterialPageRoute(builder: (_)=>Info_User());
       case  SearchView : 
         return MaterialPageRoute(builder: (_)=>Search());
+      case  CardView : 
+        return MaterialPageRoute(builder: (_)=>CardStudy());
 
       default :
         return _errorRoute();
