@@ -1,15 +1,11 @@
 
 import 'package:flutter/material.dart';
+import 'package:soa_app/routes/routes_path.dart';
 import 'package:soa_app/ui/search/card.dart';
-import 'package:observable_ish/observable_ish.dart';
+import 'package:soa_app/ui/search/create_card.dart';
 
-final rxStrings = RxValue<String>();
 List <CardAlert> CardsAlerts  = new List(10);
 
-bool _userEdited =false;
-String _choiceDrop = null;
-
-final _tagControler = TextEditingController();
 
 class Search extends StatefulWidget {
   @override
@@ -32,59 +28,20 @@ class _SearchState extends State<Search> {
           ),
           backgroundColor: Colors.white,
           floatingActionButton: FloatingActionButton(
-            onPressed: (){},
+            onPressed: (){
+              Navigator.of(context).pushNamed(CreateCardView);
+            },
             child: Icon(Icons.add),
             backgroundColor: Colors.deepPurpleAccent,
           ),
-          body: SingleChildScrollView(
-            padding: EdgeInsets.all(10.0),
-              child: Column(
-                children: <Widget>[
-                  TextField(
-                    decoration: InputDecoration(labelText: "Titulo"),
-                    onChanged: (text){
-                      _userEdited=true;
-                      setState(() {
-                        
-                      });
-                    },
-                  ),
-                  TextField(
-                    decoration: InputDecoration(labelText: "Descrição"),
-                    onChanged: (text){
-                      _userEdited=true;
-                      setState(() {
-                        
-                      });
-                    },
-                  ),
-                  
-                  Padding(
-                    
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(rxStrings.value.toString(),style: TextStyle(fontSize: 25.0),),
-                  ),
-                  
-                  DropdownButton(
-                    
-                    items:  <String>['Informatica', 'Flutter', 'Calculo de Area']
-                      .map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      })
-                      .toList(), onChanged: (String value) {
-                        _choiceDrop=value;
-                        setState(() {
-                          rxStrings.value=value; 
-                        });
-                      },
-                  ),
-                ],
-              ),
-          ),
+          body: 
+          ListView.builder(padding: EdgeInsets.all(25.0),
+          itemCount: CardsAlerts.length,
+          itemBuilder: (context,index){
+            return CardStudy();
+          },
         )
+      )
     );
   }
 }

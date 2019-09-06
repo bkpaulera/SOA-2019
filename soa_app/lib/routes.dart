@@ -11,7 +11,9 @@ import 'package:soa_app/ui/login/login_register.dart';
 import 'package:soa_app/ui/profile/config.dart';
 import 'package:soa_app/ui/profile/info_user.dart';
 import 'package:soa_app/ui/search/card.dart';
+import 'package:soa_app/ui/search/create_card.dart';
 import 'package:soa_app/ui/search/search.dart';
+
 
 class RouterGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings){
@@ -46,6 +48,8 @@ class RouterGenerator {
         return MaterialPageRoute(builder: (_)=>Search());
       case  CardView : 
         return MaterialPageRoute(builder: (_)=>CardStudy());
+      case  CreateCardView : 
+        return MaterialPageRoute(builder: (_)=>CreateCard());
 
       default :
         return _errorRoute();
