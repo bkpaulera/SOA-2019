@@ -14,9 +14,6 @@ class _CardStudyState extends State<CardStudy> with TickerProviderStateMixin{
       color: Colors.deepPurpleAccent[100],
         child: Padding(padding: EdgeInsets.all(10.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
             children: <Widget>[
               FlutterLogo(colors: Colors.purple,size: 30.0,),
               Divider(),
@@ -26,8 +23,7 @@ class _CardStudyState extends State<CardStudy> with TickerProviderStateMixin{
           ),
           )  
         ),
-      ),
-    );
+      );
   }
 }
 
