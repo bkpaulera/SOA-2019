@@ -15,3 +15,5 @@ const String ProfileConfigView = '/ui/profile/config';
 const String ProfileInfoView = '/ui/lprofile/info_user'; 
 //Search
 const String SearchView = '/ui/search/search'; 
+const String CardView = '/ui/search/card'; 
+const String CreateCardView = '/ui/search/create_card'; 
