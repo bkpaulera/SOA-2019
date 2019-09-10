@@ -26,7 +26,7 @@ class _SearchState extends State<Search> {
             backgroundColor: Colors.deepPurpleAccent,
             centerTitle: true,
           ),
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.white70,
           floatingActionButton: FloatingActionButton(
             onPressed: (){
               Navigator.of(context).pushNamed(CreateCardView);
