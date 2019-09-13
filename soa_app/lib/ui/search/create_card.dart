@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-//import 'package:observable_ish/observable_ish.dart';
+import 'package:observable_ish/observable_ish.dart';
 
-//final rxStrings = RxValue<String>();
+final rxStrings = RxValue<String>();
 
 bool _userEdited =false;
 String _choiceDrop = null;
@@ -40,8 +40,7 @@ class _CreateCardState extends State<CreateCard> {
                   
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    //child: Text(rxStrings.value.toString(),style: TextStyle(fontSize: 25.0),),
-                    child: Text('Alguma coisa deveria aparecer aqui"'),
+                    child: Text(rxStrings.value.toString(),style: TextStyle(fontSize: 25.0),),
                   ),
                   
                   DropdownButton(
@@ -56,7 +55,7 @@ class _CreateCardState extends State<CreateCard> {
                       .toList(), onChanged: (String value) {
                         _choiceDrop=value;
                         setState(() {
-                          //rxStrings.value=value; 
+                          rxStrings.value=value; 
                         });
                       },
                   ),
