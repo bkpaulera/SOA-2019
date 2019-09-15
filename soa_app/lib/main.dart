@@ -4,7 +4,7 @@ import 'package:soa_app/routes/routes_path.dart';
 
 void main(){
   runApp(MaterialApp(
-    initialRoute: LoginMainView,
+    //initialRoute: LoginMainView,
     onGenerateRoute: RouterGenerator.generateRoute,
     home: HomeMain(),
   ));
