@@ -13,12 +13,22 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Home"),
-        backgroundColor: Colors.deepPurpleAccent,),
-
+        centerTitle: true,
+        backgroundColor: Colors.deepPurpleAccent,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.notifications),
+            onPressed: (){
+              Navigator.of(context).pushNamed(SearchView);
+            },
+          ),
+        ],
+        ),
+        
         drawer: Drawer(
           child: ListView(
             children: <Widget>[
-              DrawerHeader(
+               DrawerHeader(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(colors: <Color>[
                     Colors.deepOrange,
@@ -28,16 +38,16 @@ class _HomeState extends State<Home> {
                 ),
                 child: Text('Esse será o Topo'),),
               
-              CostumListTitle(Icons.person,'Perfil',(){Navigator.of(context).pushNamed(ProfileInfoView);}),
-              CostumListTitle(Icons.find_replace, 'Pesquisar',(){Navigator.of(context).pushNamed(SearchView);}),
-              CostumListTitle(Icons.chat,'Conversas',(){Navigator.of(context).pushNamed(TalksView);}),
-              CostumListTitle(Icons.settings,'Configurações',(){Navigator.of(context).pushNamed(ProfileConfigView);}),
-              CostumListTitle(Icons.exit_to_app,'Deslogar',(){Navigator.of(context).pushNamed(LoginMainView);}),
+              CostumListTitle(Icons.person,'Perfil',(){Navigator.pop(context);Navigator.of(context).pushNamed(ProfileInfoView);}),
+              CostumListTitle(Icons.find_replace, 'Pesquisar',(){Navigator.pop(context);Navigator.of(context).pushNamed(SearchView);}),
+              CostumListTitle(Icons.chat,'Conversas',(){Navigator.pop(context);Navigator.of(context).pushNamed(TalksView);}),
+              CostumListTitle(Icons.settings,'Configurações',(){Navigator.pop(context);Navigator.of(context).pushNamed(ProfileConfigView);}),
+              CostumListTitle(Icons.exit_to_app,'Deslogar',(){Navigator.pop(context);Navigator.of(context).pushNamed(LoginMainView);}),
 
             ],
           ),
         ),
-
+      
       //  body:
       // Center(
        //   child: Center(

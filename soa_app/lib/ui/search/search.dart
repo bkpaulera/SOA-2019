@@ -24,6 +24,12 @@ class _SearchState extends State<Search> {
             title: Text('Alertas'),
             backgroundColor: Colors.deepPurpleAccent,
             centerTitle: true,
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: (){
+                Navigator.pop(context);
+                },
+          ),
           ),
           backgroundColor: Colors.white70,
           floatingActionButton: FloatingActionButton(
