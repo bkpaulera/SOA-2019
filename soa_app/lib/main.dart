@@ -73,7 +73,7 @@ class _HomeMainState extends State<HomeMain> {
            child: RaisedButton(onPressed: () {
             Navigator.of(context).pushNamed(LoginMainView);
         },
-        child: Text('Go to Login'),
+        child: Text('Login'),
         ),
          ),
         ],
