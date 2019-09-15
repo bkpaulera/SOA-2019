@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:soa_app/main.dart';
 import 'package:soa_app/routes/routes_path.dart';
-import 'package:soa_app/ui/search/create_card.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -21,8 +20,7 @@ class _LoginState extends State<Login> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
           onPressed: (){
-            //Navigator.of(context).pushNamed(HomeMainView);
-            CreateCard();
+            Navigator.of(context).pushNamed(HomeMainView);
             },
           ),
         ),
