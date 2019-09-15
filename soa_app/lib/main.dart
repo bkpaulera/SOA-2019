@@ -4,6 +4,7 @@ import 'package:soa_app/routes/routes_path.dart';
 
 void main(){
   runApp(MaterialApp(
+    title: 'MatchStudos',
     //initialRoute: LoginMainView,
     onGenerateRoute: RouterGenerator.generateRoute,
     home: HomeMain(),
@@ -19,6 +20,7 @@ class _HomeMainState extends State<HomeMain> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       //appBar: AppBar(
         //title: Text("Projeto SOA"),
         //backgroundColor: Colors.blueAccent,
