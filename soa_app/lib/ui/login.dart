@@ -37,7 +37,7 @@ class _LoginState extends State<Login> {
                 padding: const EdgeInsets.only(bottom: 10.0),
                 child: Container(
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height/2.5,
+                    height: MediaQuery.of(context).size.height/3.5,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                          begin: Alignment.topCenter,
@@ -48,8 +48,8 @@ class _LoginState extends State<Login> {
                             ],
                         ),
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(40),
-                  bottomRight: Radius.circular(40),
+                  bottomLeft: Radius.circular(30),
+                  bottomRight: Radius.circular(30),
                  ),
                 ),
                   ),
@@ -78,9 +78,11 @@ class _LoginState extends State<Login> {
                       ]
                     ),
                     
-                    child: TextField(
-                   keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
+                    child: 
+                    TextFormField(
+                    autofocus: true,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
                     icon: Icon(
                       Icons.email,
                       color: Colors.blueGrey,
@@ -119,23 +121,25 @@ class _LoginState extends State<Login> {
                         ]
                       ),
                       
-                      child: TextField(
-                     keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      icon: Icon(
-                        Icons.security,
-                        color: Colors.blueGrey,
-                        ),
-                      hintText: 'Senha',
+                      child: 
+                      TextFormField(
+                        autofocus: true,
+                         keyboardType: TextInputType.emailAddress,
+                        decoration: InputDecoration(
+                          icon: Icon(
+                           Icons.security,
+                            color: Colors.blueGrey,
+                            ),
+                        hintText: 'Senha',
                      // labelText: 'Senha',
                       labelStyle: TextStyle(color: Colors.deepPurpleAccent),
                     ),
                   ),
                 ),
-                    ],
-                    ),
-                  ),
-              ),
+               ],
+            ),
+          ),
+        ),
               
               Container(
                 height: 40,
@@ -155,9 +159,9 @@ class _LoginState extends State<Login> {
               ),
 
               Padding(
-                 padding: const EdgeInsets.symmetric(horizontal:30.0, vertical: 4.0),
+                 padding: const EdgeInsets.symmetric(horizontal:20.0, vertical: 4.0),
                 child: Container(
-                  height: 60,
+                  height: 40,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(
@@ -170,7 +174,7 @@ class _LoginState extends State<Login> {
                       child: Text(
                       'Login', 
                       style: TextStyle(
-                        fontSize: 24,
+                        fontSize: 20,
                       ),
                       textAlign: TextAlign.right,
                       ),
@@ -183,9 +187,9 @@ class _LoginState extends State<Login> {
               ),
               
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal:30.0, vertical: 4.0),
+                padding: const EdgeInsets.symmetric(horizontal:20.0, vertical: 4.0),
                 child: Container(
-                  height: 60,
+                  height: 40,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(
@@ -198,7 +202,7 @@ class _LoginState extends State<Login> {
                       child: Text(
                       'Cadastrar', 
                       style: TextStyle(
-                        fontSize: 24,
+                        fontSize: 20,
                       ),
                       textAlign: TextAlign.right,
                       ),
