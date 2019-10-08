@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:soa_app/routes.dart';
 import 'package:soa_app/routes/routes_path.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main(){
+  Firestore.instance.collection(';');
   runApp(MaterialApp(
     title: 'MatchStudos',
     //initialRoute: LoginMainView,
