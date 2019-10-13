@@ -19,29 +19,34 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Flutter Demo',
-        home: 
-        Scaffold(
+        home: Scaffold(
           appBar: AppBar(
-            title: Text('Alerta'),
+            title: Text('Alertas'),
             backgroundColor: Colors.deepPurpleAccent,
             centerTitle: true,
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: (){
+                Navigator.pop(context);
+                },
           ),
-          backgroundColor: Colors.white,
+          ),
+          backgroundColor: Colors.white70,
           floatingActionButton: FloatingActionButton(
             onPressed: (){
-              Navigator.of(context).pushNamed(CreateCardView);
+              //Navigator.of(context).pushNamed(CreateCardView);
             },
             child: Icon(Icons.add),
             backgroundColor: Colors.deepPurpleAccent,
           ),
-          body: 
-          ListView.builder(padding: EdgeInsets.all(25.0),
+          body:
+           ListView.builder(padding: EdgeInsets.all(25.0),
           itemCount: CardsAlerts.length,
           itemBuilder: (context,index){
             return CardStudy();
-          },
-        )
-      )
+               },
+              ),
+       ),
     );
   }
 }

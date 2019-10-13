@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:soa_app/main.dart';
+//import 'package:soa_app/main.dart';
 import 'package:soa_app/routes/routes_path.dart';
 import 'package:soa_app/ui/chat/chat.dart';
 import 'package:soa_app/ui/chat/talks.dart';
@@ -20,8 +20,8 @@ class RouterGenerator {
     final args = settings.arguments;
 
     switch (settings.name){
-      case HomeMainView:
-        return MaterialPageRoute(builder: (_)=>HomeMain());
+     // case HomeMainView:
+        //return MaterialPageRoute(builder: (_)=>HomeMain());
       //Home Pagina
       case HomeView:
         return MaterialPageRoute(builder: (_)=>Home());
