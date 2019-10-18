@@ -14,7 +14,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text("Home"),
         centerTitle: true,
-        backgroundColor: Colors.deepPurpleAccent,
+        backgroundColor: Colors.lightBlueAccent,
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.notifications),
@@ -31,12 +31,21 @@ class _HomeState extends State<Home> {
                DrawerHeader(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(colors: <Color>[
-                    Colors.deepOrange,
-                    Colors.deepOrangeAccent,
+                    Colors.lightBlueAccent,
+                    Colors.lightBlueAccent,
                     ]
-                  )
+                  ),
                 ),
-                child: Text('Esse será o Topo'),),
+                child: CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  radius: 48.0,
+                  child: Image(
+                  image: NetworkImage('https://images.cdn3.stockunlimited.net/preview1300/reading-book-icon_1577769.jpg'),
+                  width: 300,
+                  height: 300,
+                    ),
+                  ),
+                ),
               
               CostumListTitle(Icons.person,'Perfil',(){Navigator.pop(context);Navigator.of(context).pushNamed(ProfileInfoView);}),
               CostumListTitle(Icons.find_replace, 'Pesquisar',(){Navigator.pop(context);Navigator.of(context).pushNamed(SearchView);}),
@@ -47,31 +56,10 @@ class _HomeState extends State<Home> {
             ],
           ),
         ),
-      
-      //  body:
-      // Center(
-       //   child: Center(
-        //    child: Column(
-         //   children: <Widget>[
-              // Deslogar
-           //   RaisedButton(onPressed: () {Navigator.of(context).pop();},child: Text('Deslogar'),),
-              //Chat
-          //    RaisedButton(onPressed: () {Navigator.of(context).pushNamed(ChatView);},child: Text('Chat'),),
-              //Conversas
-          //    RaisedButton(onPressed: () {Navigator.of(context).pushNamed(TalksView);},child: Text('Conversas'),),
-              //Profile
-          //    RaisedButton(onPressed: () {Navigator.of(context).pushNamed(ProfileInfoView);},child: Text('Informação do Perfil'),),
-              //Configuração
-         //     RaisedButton(onPressed: () {Navigator.of(context).pushNamed(ProfileConfigView);},child: Text('Configuração'),),
-              //Search
-         //     RaisedButton(onPressed: () {Navigator.of(context).pushNamed(SearchView);},child: Text('Tela de Busca'),),
-         //      ],
-        //  ),
-          // )
-        // ),
     );
   }
 }
+
 class CostumListTitle  extends StatelessWidget{
 
       IconData icon;
@@ -84,7 +72,7 @@ class CostumListTitle  extends StatelessWidget{
     return Padding(
       padding: const EdgeInsets.fromLTRB(8.0,0,8.0,0),
       child: InkWell(
-       // splashColor: Colors.deepPurpleAccent,
+        splashColor: Colors.lightBlueAccent[100],
         onTap: onTap,
         child:Container(
           height: 50,
