@@ -1,18 +1,18 @@
 
 import 'package:flutter/material.dart';
 
-class Config extends StatefulWidget {
+class Register extends StatefulWidget {
   @override
-  _ConfigState createState() => _ConfigState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _ConfigState extends State<Config> {
+class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Configuração"),
-        backgroundColor: Colors.lightBlueAccent,),
+        title: Text("Cadastro"),
+        backgroundColor: Colors.deepPurpleAccent,),
         body: Center(
           child: RaisedButton(onPressed: () {
             Navigator.pop(context);

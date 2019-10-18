@@ -21,8 +21,8 @@ class _LoginState extends State<Login> {
         radius: 48.0,
         child: Image(
           image: NetworkImage('https://images.cdn3.stockunlimited.net/preview1300/reading-book-icon_1577769.jpg'),
-          width: 300,
-          height: 300,
+          width: 400,
+          height: 400,
           ),
         ),
       );
@@ -56,9 +56,24 @@ class _LoginState extends State<Login> {
         onPressed: () {
           Navigator.of(context).pushNamed(HomeView);
         },
-        padding: EdgeInsets.all(12),
+        padding: EdgeInsets.all(14),
         color: Colors.lightBlueAccent,
         child: Text('Login', style: TextStyle(fontSize: 18 ,color: Colors.white)),
+      ),
+    );
+
+    final registerButton = Padding(
+      padding: EdgeInsets.symmetric(vertical: 1.0),
+      child: RaisedButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24),
+        ),
+        onPressed: () {
+          Navigator.of(context).pushNamed(LoginRegisterView);
+        },
+        padding: EdgeInsets.all(12),
+        color: Colors.lightBlueAccent,
+        child: Text('Registrar', style: TextStyle(fontSize: 18 ,color: Colors.white)),
       ),
     );
 
@@ -86,6 +101,7 @@ class _LoginState extends State<Login> {
             password,
             SizedBox(height: 24.0),
             loginButton,
+            registerButton,
             forgotLabel
           ],
         ),
