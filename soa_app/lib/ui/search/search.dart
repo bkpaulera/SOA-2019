@@ -18,11 +18,11 @@ class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
+        //title: 'Flutter Demo',
         home: Scaffold(
           appBar: AppBar(
             title: Text('Alertas'),
-            backgroundColor: Colors.deepPurpleAccent,
+            backgroundColor: Colors.lightBlueAccent,
             centerTitle: true,
             leading: IconButton(
               icon: Icon(Icons.arrow_back),

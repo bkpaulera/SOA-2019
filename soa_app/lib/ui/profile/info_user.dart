@@ -12,7 +12,7 @@ class _Info_UserState extends State<Info_User> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Informação do Usuario"),
-        backgroundColor: Colors.deepPurpleAccent,),
+        backgroundColor: Colors.lightBlueAccent,),
         body: Center(
           child: RaisedButton(onPressed: () {
             Navigator.pop(context);

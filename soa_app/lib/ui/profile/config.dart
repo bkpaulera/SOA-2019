@@ -12,7 +12,7 @@ class _ConfigState extends State<Config> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Configuração"),
-        backgroundColor: Colors.deepPurpleAccent,),
+        backgroundColor: Colors.lightBlueAccent,),
         body: Center(
           child: RaisedButton(onPressed: () {
             Navigator.pop(context);
