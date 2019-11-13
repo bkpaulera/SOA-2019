@@ -4,15 +4,12 @@ import 'package:soa_app/routes/routes_path.dart';
 import 'package:soa_app/ui/search/card.dart';
 import 'package:soa_app/ui/search/create_card.dart';
 
-List <CardAlert> CardsAlerts  = new List(10);
-
+List <CardAlert> CardsAlerts  = new List(2);
 
 class Search extends StatefulWidget {
   @override
   _SearchState createState() => _SearchState();
 }
-
-
 
 class _SearchState extends State<Search> {
   @override
@@ -24,14 +21,18 @@ class _SearchState extends State<Search> {
             title: Text('Alertas'),
             backgroundColor: Colors.lightBlueAccent,
             centerTitle: true,
+            actions: <Widget>[
+                IconButton(icon: Icon(Icons.refresh), onPressed: (){})
+              ],
             leading: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: (){
                 Navigator.pop(context);
                 },
           ),
+
           ),
-          backgroundColor: Colors.white70,
+          backgroundColor: Colors.white,
           floatingActionButton: FloatingActionButton(
             onPressed: (){
               //Navigator.of(context).pushNamed(CreateCardView);
@@ -40,13 +41,17 @@ class _SearchState extends State<Search> {
             backgroundColor: Colors.deepPurpleAccent,
           ),
           body:
-           ListView.builder(padding: EdgeInsets.all(25.0),
-          itemCount: CardsAlerts.length,
-          itemBuilder: (context,index){
-            return CardStudy();
-               },
-              ),
-       ),
+          Container(
+            child:      
+            ListView.builder(padding: EdgeInsets.all(25.0),
+            itemCount: CardsAlerts.length,
+            itemBuilder: (context,index){
+              return CardStudy();
+                },
+            ),  
+          )
+      ),
+      
     );
   }
 }
