@@ -1,114 +1,101 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import { StyleSheet, Platform, Image, Text, View, ScrollView } from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import firebase from 'react-native-firebase';
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
+export default class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+
+  async componentDidMount() {
+    // TODO: You: Do firebase things
+    // const { user } = await firebase.auth().signInAnonymously();
+    // console.warn('User -> ', user.toJSON());
+
+    // await firebase.analytics().logEvent('foo', { bar: '123'});
+  }
+
+  render() {
+    return (
+      <ScrollView>
+        <View style={styles.container}>
+          <Image source={require('./assets/ReactNativeFirebase.png')} style={[styles.logo]}/>
+          <Text style={styles.welcome}>
+            Welcome to {'\n'} React Native Firebase
+          </Text>
+          <Text style={styles.instructions}>
+            To get started, edit App.js
+          </Text>
+          {Platform.OS === 'ios' ? (
+            <Text style={styles.instructions}>
+              Press Cmd+R to reload,{'\n'}
+              Cmd+D or shake for dev menu
+            </Text>
+          ) : (
+            <Text style={styles.instructions}>
+              Double tap R on your keyboard to reload,{'\n'}
+              Cmd+M or shake for dev menu
+            </Text>
           )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
+          <View style={styles.modules}>
+            <Text style={styles.modulesHeader}>The following Firebase modules are pre-installed:</Text>
+            {firebase.admob.nativeModuleExists && <Text style={styles.module}>admob()</Text>}
+            {firebase.analytics.nativeModuleExists && <Text style={styles.module}>analytics()</Text>}
+            {firebase.auth.nativeModuleExists && <Text style={styles.module}>auth()</Text>}
+            {firebase.config.nativeModuleExists && <Text style={styles.module}>config()</Text>}
+            {firebase.crashlytics.nativeModuleExists && <Text style={styles.module}>crashlytics()</Text>}
+            {firebase.database.nativeModuleExists && <Text style={styles.module}>database()</Text>}
+            {firebase.firestore.nativeModuleExists && <Text style={styles.module}>firestore()</Text>}
+            {firebase.functions.nativeModuleExists && <Text style={styles.module}>functions()</Text>}
+            {firebase.iid.nativeModuleExists && <Text style={styles.module}>iid()</Text>}
+            {firebase.links.nativeModuleExists && <Text style={styles.module}>links()</Text>}
+            {firebase.messaging.nativeModuleExists && <Text style={styles.module}>messaging()</Text>}
+            {firebase.notifications.nativeModuleExists && <Text style={styles.module}>notifications()</Text>}
+            {firebase.perf.nativeModuleExists && <Text style={styles.module}>perf()</Text>}
+            {firebase.storage.nativeModuleExists && <Text style={styles.module}>storage()</Text>}
           </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+        </View>
+      </ScrollView>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  logo: {
+    height: 120,
+    marginBottom: 16,
+    marginTop: 64,
+    padding: 10,
+    width: 135,
   },
-  body: {
-    backgroundColor: Colors.white,
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
+  modules: {
+    margin: 20,
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
+  modulesHeader: {
+    fontSize: 16,
+    marginBottom: 8,
   },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
+  module: {
+    fontSize: 14,
+    marginTop: 4,
+    textAlign: 'center',
+  }
 });
-
-export default App;
