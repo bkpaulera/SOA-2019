@@ -76,8 +76,9 @@ class _Info_UserState extends State<Info_User> {
                   onPressed: (){
                     
                   },
-                    child: Text("Salvar", 
-                    style: TextStyle(color: Colors.white, fontSize: 20.0)),
+                    child: Text("Editar", 
+                    style: TextStyle(color: Colors.white, fontSize: 20.0)
+                    ),
                 ),
               ),
               ),
