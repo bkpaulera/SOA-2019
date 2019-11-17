@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 import 'package:soa_app/routes/routes_path.dart';
 import 'package:soa_app/ui/search/card.dart';
+import 'package:soa_app/ui/search/create_card.dart';
 import 'package:soa_app/ui/search/search.dart';
 
 class Home extends StatefulWidget {
@@ -61,15 +62,11 @@ class _HomeState extends State<Home> {
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Container(
-              child:      
-              ListView.builder(padding: EdgeInsets.all(25.0),
-              itemCount: CardsAlerts.length,
-              itemBuilder: (context,index){
-                return CardStudy();
-                  },
-              ),  
-            ),
+          child: PageView(
+            children: <Widget>[
+                  CreateCard()
+            ],
+          ),
         ),
     );
   }
@@ -94,7 +91,7 @@ class CostumListTitle  extends StatelessWidget{
           child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Row(
+              Row(  
                 children: <Widget>[
                   Icon(icon),
                   Padding(
