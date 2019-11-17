@@ -7,8 +7,9 @@ class CardStudy extends StatelessWidget{
     return  Container(
       margin: EdgeInsets.symmetric(horizontal: 4 , vertical: 4),
       child: Card(
+        color: Colors.white70,
         child: ExpansionTile(
-          title: Text("Cartao de Alerta", style: TextStyle(color: Colors.black),),
+          title: Text("Exatas",style: TextStyle(color: Colors.blueAccent),),
           children: <Widget>[
             Padding(padding: EdgeInsets.only(left: 16.0, right: 16.0,top: 0.0,bottom: 8.0),
             child: Column(
@@ -20,12 +21,35 @@ class CardStudy extends StatelessWidget{
                     children: <Widget>[
                       ListTile(
                         title: Text("Exatas"),
-                        subtitle: Text("Duvida em Flutter"),
-                        trailing:  Icon(Icons.add_alert),
+                        subtitle: Text("Duvida em Flutter",),
+                        trailing:  Icon(Icons.add_alert,),
                         contentPadding: EdgeInsets.zero,
                       )
                     ],
-                  )
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      FlatButton(
+                        color: Colors.yellow,
+                        onPressed: (){},
+                        textColor: Colors.black,
+                        child: Text("Buzz"),
+                      ),
+                      FlatButton(
+                        color: Colors.greenAccent,
+                        onPressed: (){},
+                        textColor: Colors.black,
+                        child: Text("Adicionar"),
+                      ),
+                      FlatButton(
+                        color: Colors.redAccent,
+                        onPressed: (){},
+                        textColor: Colors.black,
+                        child: Text("Adicionar"),
+                      )
+                    ],
+                  ),
                 ],
               ),
             )
