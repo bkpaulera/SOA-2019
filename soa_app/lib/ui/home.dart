@@ -1,6 +1,9 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/basic.dart';
 import 'package:soa_app/routes/routes_path.dart';
+import 'package:soa_app/ui/search/card.dart';
+import 'package:soa_app/ui/search/search.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -50,11 +53,23 @@ class _HomeState extends State<Home> {
               CostumListTitle(Icons.person,'Perfil',(){Navigator.pop(context);Navigator.of(context).pushNamed(ProfileInfoView);}),
               CostumListTitle(Icons.find_replace, 'Pesquisar',(){Navigator.pop(context);Navigator.of(context).pushNamed(SearchView);}),
               CostumListTitle(Icons.chat,'Conversas',(){Navigator.pop(context);Navigator.of(context).pushNamed(TalksView);}),
-              CostumListTitle(Icons.settings,'Configurações',(){Navigator.pop(context);Navigator.of(context).pushNamed(ProfileConfigView);}),
+              //CostumListTitle(Icons.settings,'Configurações',(){Navigator.pop(context);Navigator.of(context).pushNamed(ProfileConfigView);}),
               CostumListTitle(Icons.exit_to_app,'Deslogar',(){Navigator.pop(context);Navigator.of(context).pushNamed(LoginMainView);}),
 
             ],
           ),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+              child:      
+              ListView.builder(padding: EdgeInsets.all(25.0),
+              itemCount: CardsAlerts.length,
+              itemBuilder: (context,index){
+                return CardStudy();
+                  },
+              ),  
+            ),
         ),
     );
   }

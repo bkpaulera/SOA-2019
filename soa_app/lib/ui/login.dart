@@ -57,8 +57,8 @@ class _LoginState extends State<Login> {
           Navigator.of(context).pushNamed(HomeView);
         },
         padding: EdgeInsets.all(14),
-        color: Colors.lightBlueAccent,
-        child: Text('Login', style: TextStyle(fontSize: 18 ,color: Colors.white)),
+        color: Colors.yellowAccent,
+        child: Text('Login', style: TextStyle(fontSize: 18 ,color: Colors.black87)),
       ),
     );
 
@@ -72,8 +72,8 @@ class _LoginState extends State<Login> {
           Navigator.of(context).pushNamed(LoginRegisterView);
         },
         padding: EdgeInsets.all(12),
-        color: Colors.lightBlueAccent,
-        child: Text('Registrar', style: TextStyle(fontSize: 18 ,color: Colors.white)),
+        color: Colors.yellowAccent,
+        child: Text('Registrar', style: TextStyle(fontSize: 18 ,color: Colors.black87)),
       ),
     );
 
@@ -95,6 +95,13 @@ class _LoginState extends State<Login> {
           padding: EdgeInsets.only(left: 24.0, right: 24.0),
           children: <Widget>[
             logo,
+            Text(
+              "Hive Study",
+              textAlign: TextAlign.center,
+              style: TextStyle(color: 
+                      Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 40.0),),
             SizedBox(height: 48.0),
             email,
             SizedBox(height: 8.0),
