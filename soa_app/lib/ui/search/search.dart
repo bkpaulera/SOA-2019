@@ -4,7 +4,7 @@ import 'package:soa_app/routes/routes_path.dart';
 import 'package:soa_app/ui/search/card.dart';
 import 'package:soa_app/ui/search/create_card.dart';
 
-List <CardAlert> CardsAlerts  = new List(2);
+//List <CardAlert> CardsAlerts  = new List(2);
 
 class Search extends StatefulWidget {
   @override
@@ -42,13 +42,15 @@ class _SearchState extends State<Search> {
           ),
           body:
           Container(
-            child:      
+            child: 
+            Text("data")     
+            /*
             ListView.builder(padding: EdgeInsets.all(25.0),
             itemCount: CardsAlerts.length,
             itemBuilder: (context,index){
               return CardStudy();
                 },
-            ),  
+            ),*/  
           )
       ),
       

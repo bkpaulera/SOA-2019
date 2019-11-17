@@ -1,65 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:soa_app/ui/search/card.dart';
 
-import 'package:observable_ish/observable_ish.dart';
+const _list = 5;
 
-final rxStrings = RxValue<String>();
 
-bool _userEdited =false;
-String _choiceDrop = null;
-
-final _tagControler = TextEditingController();
-
-class CreateCard extends StatefulWidget {
-  @override
-  _CreateCardState createState() => _CreateCardState();
-}
-
-class _CreateCardState extends State<CreateCard> {
+class CreateCard extends StatelessWidget { 
   @override
   Widget build(BuildContext context) {
-    return Column(
-                children: <Widget>[
-                  TextField(
-                    decoration: InputDecoration(labelText: "Titulo"),
-                    onChanged: (text){
-                      _userEdited=true;
-                      setState(() {
-                        
-                      });
-                    },
-                  ),
-                  TextField(
-                    decoration: InputDecoration(labelText: "Descrição"),
-                    onChanged: (text){
-                      _userEdited=true;
-                      setState(() {
-                        
-                      });
-                    },
-                  ),
-                  
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(rxStrings.value.toString(),style: TextStyle(fontSize: 25.0),),
-                  ),
-                  
-                  DropdownButton(
-                    
-                    items:  <String>['Informatica', 'Flutter', 'Calculo de Area']
-                      .map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      })
-                      .toList(), onChanged: (String value) {
-                        _choiceDrop=value;
-                        setState(() {
-                          rxStrings.value=value; 
-                        });
-                      },
-                  ),
-                ],
-          );
+    return Padding( 
+      padding: EdgeInsets.symmetric(vertical: 16.0),
+      child: ListView.builder(
+        itemCount: 5,
+        itemBuilder: (context, index){
+          return CardStudy();
+        },
+      ),
+    );
   }
 }
