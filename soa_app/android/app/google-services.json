@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "147715432608",
-    "firebase_url": "https://matchstudentproject.firebaseio.com",
-    "project_id": "matchstudentproject",
-    "storage_bucket": "matchstudentproject.appspot.com"
+    "project_number": "37839621735",
+    "firebase_url": "https://matchstudentapp.firebaseio.com",
+    "project_id": "matchstudentapp",
+    "storage_bucket": "matchstudentapp.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:147715432608:android:193b1b38cc30051f9ea9c5",
+        "mobilesdk_app_id": "1:37839621735:android:9491cd187ef52d12904ec2",
         "android_client_info": {
           "package_name": "br.com.unip.cc6p12.soa_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "147715432608-b0gfjdrgv2r26h9tqvicdmus59p2hb0u.apps.googleusercontent.com",
+          "client_id": "37839621735-7qu599ih0bd1mrqifibff47v0qc3tkhe.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "br.com.unip.cc6p12.soa_app",
@@ -23,20 +23,20 @@
           }
         },
         {
-          "client_id": "147715432608-lh2rbgfkvgsvvub6jah5688515rr7fh4.apps.googleusercontent.com",
+          "client_id": "37839621735-cd53a3p5bh76ti5fiu7ogbg4h81um9s5.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBX1lclZclHsOh-e0RT9tX-sqApoO-G5k4"
+          "current_key": "AIzaSyBfXEcHQB3pYE-uKadf7yNgEtb7HBP-520"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "147715432608-lh2rbgfkvgsvvub6jah5688515rr7fh4.apps.googleusercontent.com",
+              "client_id": "37839621735-cd53a3p5bh76ti5fiu7ogbg4h81um9s5.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
