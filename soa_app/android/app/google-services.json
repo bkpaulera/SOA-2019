@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "64184607247",
+    "firebase_url": "https://colmeiastudy-b8a83.firebaseio.com",
+    "project_id": "colmeiastudy-b8a83",
+    "storage_bucket": "colmeiastudy-b8a83.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:64184607247:android:503bb1ad22a1aec16a797a",
+        "android_client_info": {
+          "package_name": "br.com.unip.cc6p12.soa_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "64184607247-tbrdaklo9qlajcquiu1tdgerjemob31v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDx1xFhkHKh8yfwtPeZ09JNvmdX0V3IfHY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "64184607247-tbrdaklo9qlajcquiu1tdgerjemob31v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
