@@ -31,9 +31,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  firebase_core: ^0.2.5 # Dependency for Firebase Core
+  firebase_core: ^0.4.0 # Dependency for Firebase Core
   firebase_analytics: ^1.0.4 # Dependency for Firebase Analytics
-
+  firebase_auth: ^0.14.0+9 # Dependency for Firebase Auth
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
