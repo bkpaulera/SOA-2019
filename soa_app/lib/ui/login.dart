@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:soa_app/main.dart';
 import 'package:soa_app/routes/routes_path.dart';
+import 'package:fireb';
 
 
 class Login extends StatefulWidget {
@@ -12,13 +13,14 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
 
-    String _email, _password;
-    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  String _email, _password;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-
-    final logo = Hero(
+    
+      
+     final logo = Hero(
       tag: 'hero',
       child: CircleAvatar(
         backgroundColor: Colors.transparent,
@@ -32,12 +34,12 @@ class _LoginState extends State<Login> {
       );
 
     final email = TextFormField(
-      validator: (input){
+      validator: ( input ) {
         if(input.isEmpty){
-          return 'Por favor preencha o campo de email';
-        } 
+          return 'Please type an email';
+        }
       },
-      onSaved: (input) => _email = input,
+      onSaved: ,
       keyboardType: TextInputType.emailAddress,
       autofocus: false,
       decoration: InputDecoration(
@@ -48,14 +50,12 @@ class _LoginState extends State<Login> {
     );
 
     final password = TextFormField(
-      validator: (input){
+      validator: ( input ) {
         if(input.isEmpty){
-          return 'Por favor preencha o campo de senha';
-        } if(input.length < 6){
-          return 'Sua senha tem menos de 6 caracteres';
+          return 'Please type an passaword';
         }
       },
-      onSaved: (input) => _password = input,
+      onSaved: ,
       autofocus: false,
       obscureText: true,
       decoration: InputDecoration(
@@ -75,8 +75,8 @@ class _LoginState extends State<Login> {
           Navigator.of(context).pushNamed(HomeView);
         },
         padding: EdgeInsets.all(14),
-        color: Colors.lightBlueAccent,
-        child: Text('Login', style: TextStyle(fontSize: 18 ,color: Colors.white)),
+        color: Colors.yellowAccent,
+        child: Text('Login', style: TextStyle(fontSize: 18 ,color: Colors.black87)),
       ),
     );
 
@@ -90,8 +90,8 @@ class _LoginState extends State<Login> {
           Navigator.of(context).pushNamed(LoginRegisterView);
         },
         padding: EdgeInsets.all(12),
-        color: Colors.lightBlueAccent,
-        child: Text('Registrar', style: TextStyle(fontSize: 18 ,color: Colors.white)),
+        color: Colors.yellowAccent,
+        child: Text('Registrar', style: TextStyle(fontSize: 18 ,color: Colors.black87)),
       ),
     );
 
@@ -108,12 +108,19 @@ class _LoginState extends State<Login> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        key: _formKey,
+        key: ,
         child: ListView(
           shrinkWrap: true,
           padding: EdgeInsets.only(left: 24.0, right: 24.0),
           children: <Widget>[
             logo,
+            Text(
+              "Hive Study",
+              textAlign: TextAlign.center,
+              style: TextStyle(color: 
+                      Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 40.0),),
             SizedBox(height: 48.0),
             email,
             SizedBox(height: 8.0),
@@ -126,11 +133,26 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
-    void signIn(){
-          final formState = _formKey.currentState;
-          if(formState.validate()){
 
+
+    void signIn() async {
+    final formState = _formKey.currentState;
+    if( formState.validate()) {
+      formState.save();
+      try{
+        FirebaseUser user = (await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password)) as FirebaseUser;
+        Navigator.push(context, MaterialPageRoute(builder: ( context ) => Home()));
+        }catch(e){
+        print(e.message);
           }
         }
+           // TODO login to firebase
+      }
+
+
+
+
+
+
   }
 }
