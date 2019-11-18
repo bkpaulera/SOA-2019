@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:soa_app/main.dart';
 import 'package:soa_app/routes/routes_path.dart';
+import 'package:fireb';
 
 
 class Login extends StatefulWidget {
@@ -11,10 +12,15 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+
+  String _email, _password;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
-
-    final logo = Hero(
+    
+      
+     final logo = Hero(
       tag: 'hero',
       child: CircleAvatar(
         backgroundColor: Colors.transparent,
@@ -28,6 +34,12 @@ class _LoginState extends State<Login> {
       );
 
     final email = TextFormField(
+      validator: ( input ) {
+        if(input.isEmpty){
+          return 'Please type an email';
+        }
+      },
+      onSaved: ,
       keyboardType: TextInputType.emailAddress,
       autofocus: false,
       decoration: InputDecoration(
@@ -38,6 +50,12 @@ class _LoginState extends State<Login> {
     );
 
     final password = TextFormField(
+      validator: ( input ) {
+        if(input.isEmpty){
+          return 'Please type an passaword';
+        }
+      },
+      onSaved: ,
       autofocus: false,
       obscureText: true,
       decoration: InputDecoration(
@@ -90,6 +108,7 @@ class _LoginState extends State<Login> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
+        key: ,
         child: ListView(
           shrinkWrap: true,
           padding: EdgeInsets.only(left: 24.0, right: 24.0),
@@ -107,5 +126,26 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
+
+
+    void signIn() async {
+    final formState = _formKey.currentState;
+    if( formState.validate()) {
+      formState.save();
+      try{
+        FirebaseUser user = (await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password)) as FirebaseUser;
+        Navigator.push(context, MaterialPageRoute(builder: ( context ) => Home()));
+        }catch(e){
+        print(e.message);
+          }
+        }
+           // TODO login to firebase
+      }
+
+
+
+
+
+
   }
 }
