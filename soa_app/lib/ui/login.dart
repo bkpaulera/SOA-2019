@@ -11,10 +11,6 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-
-    String _email, _password;
-    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
 
@@ -32,12 +28,6 @@ class _LoginState extends State<Login> {
       );
 
     final email = TextFormField(
-      validator: (input){
-        if(input.isEmpty){
-          return 'Por favor preencha o campo de email';
-        } 
-      },
-      onSaved: (input) => _email = input,
       keyboardType: TextInputType.emailAddress,
       autofocus: false,
       decoration: InputDecoration(
@@ -48,14 +38,6 @@ class _LoginState extends State<Login> {
     );
 
     final password = TextFormField(
-      validator: (input){
-        if(input.isEmpty){
-          return 'Por favor preencha o campo de senha';
-        } if(input.length < 6){
-          return 'Sua senha tem menos de 6 caracteres';
-        }
-      },
-      onSaved: (input) => _password = input,
       autofocus: false,
       obscureText: true,
       decoration: InputDecoration(
@@ -108,7 +90,6 @@ class _LoginState extends State<Login> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        key: _formKey,
         child: ListView(
           shrinkWrap: true,
           padding: EdgeInsets.only(left: 24.0, right: 24.0),
@@ -126,11 +107,5 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
-    void signIn(){
-          final formState = _formKey.currentState;
-          if(formState.validate()){
-
-          }
-        }
   }
 }
