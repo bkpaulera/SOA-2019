@@ -6,33 +6,41 @@ import 'package:soa_app/ui/home.dart';
 
 
 class Login extends StatefulWidget {
-  static String tag = 'login-page';
+  // static String tag = 'login-page';
   @override
   _LoginState createState() => new _LoginState();
 }
 
 class _LoginState extends State<Login> {
 
+  
   String _email, _password;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+    bool validateAndSave()  {
+    final formState = _formKey.currentState;
+    if( formState.validate()) {
+      formState.save();
+      return true;
+      }
+      return false;
+      }
+
+    void validateAndSubmit() async {
+      if(validateAndSave()){
+        try{
+        FirebaseUser user = (await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password)) as FirebaseUser;
+        print('Login de: ${user.uid}');
+        Navigator.push(context, MaterialPageRoute(builder: ( context ) => Home()));
+        }catch(e){
+          print('Erro: $e');
+        }
+      }
+    }
 
   @override
   Widget build(BuildContext context) {
     
-    Future<void> validateAndSave() async {
-    final formState = _formKey.currentState;
-      if(formState.validate()){
-        formState.save();
-         try{
-          FirebaseUser user = (await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password)) as FirebaseUser;
-          Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
-          print('signed in: ${user.uid}');
-        }
-        catch(e){
-          print('erro $e');
-          }
-        }
-      }
 
      final logo = Hero(
       tag: 'hero',
@@ -51,7 +59,7 @@ class _LoginState extends State<Login> {
       validator: ( value ) {
         return 'Por favor digite um email válido';
       },
-      onSaved: ( input ) => _email = input,
+      onSaved: ( value ) => _email = value,
       keyboardType: TextInputType.emailAddress,
       autofocus: false,
       decoration: InputDecoration(
@@ -65,7 +73,7 @@ class _LoginState extends State<Login> {
       validator: ( value ) {
         return 'Por favor digite um email válido';
       },
-      onSaved: ( input ) => _password = input,
+      onSaved: ( value ) => _password = value,
       autofocus: false,
       obscureText: true,
       decoration: InputDecoration(
@@ -81,7 +89,7 @@ class _LoginState extends State<Login> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
         ),
-        onPressed: validateAndSave,
+        onPressed: validateAndSubmit,
         padding: EdgeInsets.all(14),
         color: Colors.yellowAccent,
         child: Text('Login', style: TextStyle(fontSize: 18 ,color: Colors.black87)),
@@ -120,7 +128,7 @@ class _LoginState extends State<Login> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
+      body: Form(
         key: _formKey,
         child: ListView(
           shrinkWrap: true,
@@ -146,14 +154,5 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
-
-
-    
-
-
-
-
-
-
   }
 }
