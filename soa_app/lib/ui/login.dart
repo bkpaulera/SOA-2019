@@ -29,9 +29,10 @@ class _LoginState extends State<Login> {
     void validateAndSubmit() async {
       if(validateAndSave()){
         try{
-        FirebaseUser user = (await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password)) as FirebaseUser;
-        print('Login de: ${user.uid}');
-        Navigator.push(context, MaterialPageRoute(builder: ( context ) => Home()));
+        AuthResult user = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
+        print('Login de: $user');
+        Navigator.push(context, MaterialPageRoute(builder: ( context ) => Home(user: user.user)));
+        _formKey.currentState.reset();
         }catch(e){
           print('Erro: $e');
         }
@@ -56,9 +57,8 @@ class _LoginState extends State<Login> {
       );
 
     final email = TextFormField(
-      validator: ( value ) {
-        return 'Por favor digite um email válido';
-      },
+      autocorrect: false,
+      validator: ( value ) => value.isEmpty ? 'Email está em branco': null,
       onSaved: ( value ) => _email = value,
       keyboardType: TextInputType.emailAddress,
       autofocus: false,
@@ -70,9 +70,8 @@ class _LoginState extends State<Login> {
     );
 
     final password = TextFormField(
-      validator: ( value ) {
-        return 'Por favor digite um email válido';
-      },
+      autocorrect: false,
+      validator: ( value ) => value.isEmpty ? 'Senha está em branco': null,
       onSaved: ( value ) => _password = value,
       autofocus: false,
       obscureText: true,
@@ -101,7 +100,7 @@ class _LoginState extends State<Login> {
           borderRadius: BorderRadius.circular(24),
         ),
         onPressed: (){
-
+             Navigator.of(context).pushNamed(LoginRegisterView);
         },
         padding: EdgeInsets.all(12),
         color: Colors.yellowAccent,
@@ -123,16 +122,13 @@ class _LoginState extends State<Login> {
     );
 
 
-    
-
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: Form(
         key: _formKey,
         child: ListView(
           shrinkWrap: true,
-          padding: EdgeInsets.only(left: 24.0, right: 24.0),
+          padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 65),
           children: <Widget>[
             logo,
             Text(

@@ -1,4 +1,4 @@
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 
@@ -9,6 +9,36 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+
+    String _nome,_email, _senha, _nomeuser, _curso, _faculdade, _skills;
+    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+    bool validateAndSave()  {
+    final formState = _formKey.currentState;
+    if( formState.validate()) {
+      formState.save();
+      return true;
+      }
+      return false;
+      }
+
+    void validateAndSubmit() async {
+      if(validateAndSave()){
+        try{
+        AuthResult user = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _email, password: _senha);
+        user.user.sendEmailVerification();
+        print('Registrado de: ${user}');
+        Navigator.of(context).pop();
+        _formKey.currentState.reset();
+        }catch(e){
+          print('Erro: $e');
+        }
+      }
+    }
+
+
+
+
   @override
   Widget build(BuildContext context) {
     final logo = Hero(
@@ -37,8 +67,23 @@ class _RegisterState extends State<Register> {
       final email = TextFormField(
       keyboardType: TextInputType.emailAddress,
       autofocus: false,
+      validator: ( value ) => value.isEmpty ? 'Email está em branco': null,
+      onSaved: ( value ) => _email = value,
       decoration: InputDecoration(
         hintText: 'Email',
+        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
+      ),
+    );
+
+    final senha = TextFormField(
+      autofocus: false,
+      autocorrect: false,
+      obscureText: true,
+      validator: ( value ) => value.isEmpty ? 'Senha está em branco': null,
+      onSaved: ( value ) => _senha = value,
+      decoration: InputDecoration(
+        hintText: 'Senha',
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
@@ -86,28 +131,17 @@ class _RegisterState extends State<Register> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
         ),
-        onPressed: () {
-         
-        },
+        onPressed:validateAndSubmit,
         padding: EdgeInsets.all(12),
-        color: Colors.lightBlueAccent,
-        child: Text('Cadastrar', style: TextStyle(fontSize: 18 ,color: Colors.white)),
+        color: Colors.yellowAccent,
+        child: Text('Cadastrar', style: TextStyle(fontSize: 18 ,color: Colors.black87)),
       ),
     );
 
-    //final forgotLabel = FlatButton(
-    //  child: Text(
-    //    'Forgot password?',
-    //    style: TextStyle(color: Colors.black54),
-    //  ),
-    //  onPressed: () {
-    //    Navigator.of(context).pushNamed(LoginPasswordView);
-    //  },
-    //);
-
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
+      body: Form(
+        key: _formKey,
         child: ListView(
           shrinkWrap: true,
           padding: EdgeInsets.only(left: 24.0, right: 24.0),
@@ -117,6 +151,8 @@ class _RegisterState extends State<Register> {
             name,
             SizedBox(height: 8.0),
             email,
+            SizedBox(height: 8.0),
+            senha,
             SizedBox(height: 8.0),
             nomeUsuario,
             SizedBox(height: 8.0),
