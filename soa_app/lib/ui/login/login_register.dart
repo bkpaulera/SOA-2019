@@ -1,7 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:soa_app/main.dart';
-import 'package:soa_app/routes/routes_path.dart';
 
 
 class Register extends StatefulWidget {

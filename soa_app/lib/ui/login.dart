@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:soa_app/main.dart';
 import 'package:soa_app/routes/routes_path.dart';
-import 'package:fireb';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:soa_app/ui/home.dart';
 
 
 class Login extends StatefulWidget {
@@ -19,7 +19,21 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     
-      
+    Future<void> validateAndSave() async {
+    final formState = _formKey.currentState;
+      if(formState.validate()){
+        formState.save();
+         try{
+          FirebaseUser user = (await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password)) as FirebaseUser;
+          Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+          print('signed in: ${user.uid}');
+        }
+        catch(e){
+          print('erro $e');
+          }
+        }
+      }
+
      final logo = Hero(
       tag: 'hero',
       child: CircleAvatar(
@@ -34,12 +48,10 @@ class _LoginState extends State<Login> {
       );
 
     final email = TextFormField(
-      validator: ( input ) {
-        if(input.isEmpty){
-          return 'Please type an email';
-        }
+      validator: ( value ) {
+        return 'Por favor digite um email válido';
       },
-      onSaved: ,
+      onSaved: ( input ) => _email = input,
       keyboardType: TextInputType.emailAddress,
       autofocus: false,
       decoration: InputDecoration(
@@ -50,12 +62,10 @@ class _LoginState extends State<Login> {
     );
 
     final password = TextFormField(
-      validator: ( input ) {
-        if(input.isEmpty){
-          return 'Please type an passaword';
-        }
+      validator: ( value ) {
+        return 'Por favor digite um email válido';
       },
-      onSaved: ,
+      onSaved: ( input ) => _password = input,
       autofocus: false,
       obscureText: true,
       decoration: InputDecoration(
@@ -71,28 +81,27 @@ class _LoginState extends State<Login> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
         ),
-        onPressed: () {
-          Navigator.of(context).pushNamed(HomeView);
-        },
+        onPressed: validateAndSave,
         padding: EdgeInsets.all(14),
         color: Colors.yellowAccent,
         child: Text('Login', style: TextStyle(fontSize: 18 ,color: Colors.black87)),
       ),
     );
 
-    final registerButton = Padding(
-      padding: EdgeInsets.symmetric(vertical: 1.0),
-      child: RaisedButton(
+    var raisedButton = RaisedButton(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
         ),
-        onPressed: () {
-          Navigator.of(context).pushNamed(LoginRegisterView);
+        onPressed: (){
+
         },
         padding: EdgeInsets.all(12),
         color: Colors.yellowAccent,
         child: Text('Registrar', style: TextStyle(fontSize: 18 ,color: Colors.black87)),
-      ),
+      );
+    final registerButton = Padding(
+      padding: EdgeInsets.symmetric(vertical: 1.0),
+      child: raisedButton,
     );
 
     final forgotLabel = FlatButton(
@@ -105,10 +114,14 @@ class _LoginState extends State<Login> {
       },
     );
 
+
+    
+
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        key: ,
+        key: _formKey,
         child: ListView(
           shrinkWrap: true,
           padding: EdgeInsets.only(left: 24.0, right: 24.0),
@@ -135,19 +148,7 @@ class _LoginState extends State<Login> {
     );
 
 
-    void signIn() async {
-    final formState = _formKey.currentState;
-    if( formState.validate()) {
-      formState.save();
-      try{
-        FirebaseUser user = (await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password)) as FirebaseUser;
-        Navigator.push(context, MaterialPageRoute(builder: ( context ) => Home()));
-        }catch(e){
-        print(e.message);
-          }
-        }
-           // TODO login to firebase
-      }
+    
 
 
 

@@ -1,12 +1,17 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/basic.dart';
 import 'package:soa_app/routes/routes_path.dart';
-import 'package:soa_app/ui/search/card.dart';
 import 'package:soa_app/ui/search/create_card.dart';
-import 'package:soa_app/ui/search/search.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Home extends StatefulWidget {
+  const Home({
+    Key key,
+    this.user
+    }) : super(key: key);
+  final FirebaseUser user ;
+
+  
   @override
   _HomeState createState() => _HomeState();
 }
@@ -16,7 +21,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home",style:TextStyle(color: Colors.black87),),
+        title: Text('Bem vindo ${widget.user}',style:TextStyle(color: Colors.black87),),
         centerTitle: true,
         backgroundColor: Colors.yellow,
         actions: <Widget>[
