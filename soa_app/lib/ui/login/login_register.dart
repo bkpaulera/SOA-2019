@@ -108,6 +108,7 @@ class _RegisterState extends State<Register> {
 
     final nomeUsuario = TextFormField(
       autofocus: false,
+      validator: ( value ) => value.isEmpty ? 'Campo está em branco': null,
       onSaved: ( value ) => _nomeuser = value,
       decoration: InputDecoration(
         hintText: 'Nome de usuario',
@@ -118,6 +119,7 @@ class _RegisterState extends State<Register> {
 
     final curso = TextFormField(
       autofocus: false,
+      validator: ( value ) => value.isEmpty ? 'Campo está em branco': null,
       onSaved: ( value ) => _curso = value,
       decoration: InputDecoration(
         hintText: 'Curso',
@@ -128,6 +130,7 @@ class _RegisterState extends State<Register> {
 
     final faculdade = TextFormField(
       autofocus: false,
+      validator: ( value ) => value.isEmpty ? 'Campo está em branco': null,
       onSaved: ( value ) => _faculdade = value,
       decoration: InputDecoration(
         hintText: 'Faculdade',
@@ -138,6 +141,7 @@ class _RegisterState extends State<Register> {
 
     final skills = TextFormField(
       autofocus: false,
+      validator: ( value ) => value.isEmpty ? 'Campo está em branco': null,
       onSaved: ( value ) => _skills = value,
       decoration: InputDecoration(
         hintText: 'Digite aqui algumas skills',
