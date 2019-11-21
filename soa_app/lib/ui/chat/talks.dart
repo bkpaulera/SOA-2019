@@ -20,10 +20,9 @@ class _TalksState extends State<Talks> {
   void initState() {
     _messages = List<String>();
 
-    _messages.add("Chat ?");
-    _messages.add("Mocado");
-    _messages.add("Esperando conexão!");
-    _messages.add("Firebase.");
+    _messages.add("Tendo Duvida em C#");
+    _messages.add("Opa diz ai ");
+    _messages.add("Como faz um for? !");
     
     textEditingController = TextEditingController();
 

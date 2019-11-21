@@ -52,8 +52,8 @@ class _HomeState extends State<Home> {
                 ),
               
               CostumListTitle(Icons.person,'Perfil',(){Navigator.pop(context);Navigator.of(context).pushNamed(ProfileInfoView);}),
-              CostumListTitle(Icons.find_replace, 'Pesquisar',(){Navigator.pop(context);Navigator.of(context).pushNamed(SearchView);}),
-              CostumListTitle(Icons.chat,'Conversas',(){Navigator.pop(context);Navigator.of(context).pushNamed(TalksView);}),
+              //CostumListTitle(Icons.find_replace, 'Pesquisar',(){Navigator.pop(context);Navigator.of(context).pushNamed(SearchView);}),
+              //CostumListTitle(Icons.chat,'Conversas',(){Navigator.pop(context);Navigator.of(context).pushNamed(TalksView);}),
               //CostumListTitle(Icons.settings,'Configurações',(){Navigator.pop(context);Navigator.of(context).pushNamed(ProfileConfigView);}),
               CostumListTitle(Icons.exit_to_app,'Deslogar',(){Navigator.pop(context);Navigator.of(context).pushNamed(LoginMainView);}),
 

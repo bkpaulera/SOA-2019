@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Info_User extends StatefulWidget {
   @override
@@ -40,8 +41,8 @@ class _Info_UserState extends State<Info_User> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.lightBlueAccent[100],
-        title: Text("Perfil"),
+        backgroundColor: Colors.yellowAccent,
+        title: Text("Perfil" , style: TextStyle(color: Colors.black),),
         centerTitle: true,
       ),
       backgroundColor: Colors.white,
@@ -54,32 +55,132 @@ class _Info_UserState extends State<Info_User> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Icon(Icons.person_outline, size: 150.0,
-                color: Colors.lightBlueAccent[100],),
+                color: Colors.amberAccent,),
+                Card(
+                    color: Colors.white70,
+                    child: ExpansionTile(
+                      title: Text("Perfil",style: TextStyle(color: Colors.black),),
+                      children: <Widget>[
+                        Padding(padding: EdgeInsets.only(left: 16.0, right: 16.0,top: 0.0,bottom: 8.0),
+                        child: Column(
+                            //mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: <Widget>[
+                              Column(
+                                mainAxisSize: MainAxisSize.min, 
+                                children: <Widget>[
+                                  ListTile(
+                                    title: Text("Nome"),
+                                    subtitle: Text(_nameText,),
+                                    contentPadding: EdgeInsets.zero,
+                                  ),
+                                  ListTile(
+                                    title: Text(" Username"),
+                                    subtitle: Text(_userText,),
+                                    contentPadding: EdgeInsets.zero,
+                                  ),
+                                  ListTile(
+                                    title: Text(" Curso"),
+                                    subtitle: Text(_courseText,),
+                                    contentPadding: EdgeInsets.zero,
+                                  ),
+                                  ListTile(
+                                    title: Text("E-mail"),
+                                    subtitle: Text(_mailText,),
+                                    contentPadding: EdgeInsets.zero,
+                                  )
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  FlatButton(
+                                    color: Colors.amberAccent,
+                                    onPressed: (){
+
+                                    },
+                                    textColor: Colors.black,
+                                    child: Text("Editar"),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                Card(
+                    color: Colors.white70,
+                    child: ExpansionTile(
+                      title: Text("Skills",style: TextStyle(color: Colors.black),),
+                      children: <Widget>[
+                        Padding(padding: EdgeInsets.only(left: 16.0, right: 16.0,top: 0.0,bottom: 8.0),
+                        child: Column(
+                            //mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: <Widget>[
+                              Column(
+                                mainAxisSize: MainAxisSize.min, 
+                                children: <Widget>[
+                                  ListTile(
+                                    title: Text("Matematica"),
+                                    subtitle: Text("Geometria Analitica",),
+                                    contentPadding: EdgeInsets.zero,
+                                  ),
+                                  ListTile(
+                                    title: Text("Linguagens de Progamação"),
+                                    subtitle: Text("Fluter",),
+                                    contentPadding: EdgeInsets.zero,
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  FlatButton(
+                                    color: Colors.amberAccent,
+                                    onPressed: (){
+                                    },
+                                    textColor: Colors.black,
+                                    child: Text("Editar"),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                /*
                 Text(" Nome : "+_nameText,
-                  style: TextStyle(color: Colors.lightBlue, fontSize: 20.0 )
+                  style: TextStyle(color: Colors.yellowAccent, fontSize: 20.0 )
                 ),
                 Text(" Username : "+_userText,
-                  style: TextStyle(color: Colors.lightBlue, fontSize: 20.0)
+                  style: TextStyle(color: Colors.yellowAccent, fontSize: 20.0)
                 ),
                 Text(" Curso : "+_courseText,
-                  style: TextStyle(color: Colors.lightBlue, fontSize: 20.0)
+                  style: TextStyle(color: Colors.yellowAccent, fontSize: 20.0)
                 ),
                 Text(" e-mail : "+_mailText,
-                  style: TextStyle(color: Colors.lightBlue, fontSize: 20.0)
+                  style: TextStyle(color: Colors.yellowAccent, fontSize: 20.0)
                 ),
+                */
               Padding(
                 padding: EdgeInsets.only(top:10.0,bottom: 10),
                 child: Container(
-                height: 50.0,
+                height: 50.0
+                /*
                 child: RaisedButton(
-                  color: Colors.lightBlueAccent[100],
+                  color: Colors.yellowAccent,
                   onPressed: (){
                     
                   },
                     child: Text("Editar", 
                     style: TextStyle(color: Colors.white, fontSize: 20.0)
                     ),
-                ),
+                ),*/
               ),
               ),
             ],
