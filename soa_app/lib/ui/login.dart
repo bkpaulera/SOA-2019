@@ -49,7 +49,7 @@ class _LoginState extends State<Login> {
         backgroundColor: Colors.transparent,
         radius: 48.0,
         child: Image(
-          image: NetworkImage('https://images.cdn3.stockunlimited.net/preview1300/reading-book-icon_1577769.jpg'),
+          image: AssetImage('../images/LogoApp.jpeg'),
           width: 400,
           height: 400,
           ),
