@@ -34,7 +34,6 @@ dev_dependencies:
   firebase_auth: ^0.14.0+9
   firebase_core: 0.4.1+5 # Dependency for Firebase Core
   firebase_analytics: ^5.0.6 # Dependency for Firebase Analytics
-  cloud_firestore: ^0.12.10
 
 
 # For information on the generic Dart part of this file, see the
