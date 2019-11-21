@@ -10,7 +10,7 @@ class CreateCard extends StatelessWidget {
     return Padding( 
       padding: EdgeInsets.symmetric(vertical: 16.0),
       child: ListView.builder(
-        itemCount: 5,
+        itemCount: 2,
         itemBuilder: (context, index){
           return CardStudy();
         },

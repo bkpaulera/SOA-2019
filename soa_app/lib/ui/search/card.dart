@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soa_app/routes/routes_path.dart';
 
 
 class CardStudy extends StatelessWidget{
@@ -9,7 +10,7 @@ class CardStudy extends StatelessWidget{
       child: Card(
         color: Colors.white70,
         child: ExpansionTile(
-          title: Text("Exatas",style: TextStyle(color: Colors.blueAccent),),
+          title: Text("Linguagem de Progamação",style: TextStyle(color: Colors.blueAccent),),
           children: <Widget>[
             Padding(padding: EdgeInsets.only(left: 16.0, right: 16.0,top: 0.0,bottom: 8.0),
             child: Column(
@@ -20,7 +21,7 @@ class CardStudy extends StatelessWidget{
                     mainAxisSize: MainAxisSize.min, 
                     children: <Widget>[
                       ListTile(
-                        title: Text("Exatas"),
+                        title: Text("Como fazer um for em Flutter"),
                         subtitle: Text("Duvida em Flutter",),
                         trailing:  Icon(Icons.add_alert,),
                         contentPadding: EdgeInsets.zero,
@@ -32,7 +33,9 @@ class CardStudy extends StatelessWidget{
                     children: <Widget>[
                       FlatButton(
                         color: Colors.yellow,
-                        onPressed: (){},
+                        onPressed: (){
+                          Navigator.of(context).pushNamed(ChatView);
+                        },
                         textColor: Colors.black,
                         child: Text("Buzz"),
                       ),
@@ -46,7 +49,7 @@ class CardStudy extends StatelessWidget{
                         color: Colors.redAccent,
                         onPressed: (){},
                         textColor: Colors.black,
-                        child: Text("Adicionar"),
+                        child: Text("Remover"),
                       )
                     ],
                   ),
