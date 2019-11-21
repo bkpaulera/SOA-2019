@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:soa_app/routes/routes_path.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -16,6 +15,7 @@ class _LoginState extends State<Login> {
   
   String _email, _password;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
     bool validateAndSave()  {
     final formState = _formKey.currentState;
@@ -49,7 +49,7 @@ class _LoginState extends State<Login> {
         backgroundColor: Colors.transparent,
         radius: 48.0,
         child: Image(
-          image: AssetImage('../images/LogoApp.jpeg'),
+          image: NetworkImage('https://images.cdn3.stockunlimited.net/preview1300/reading-book-icon_1577769.jpg'),
           width: 400,
           height: 400,
           ),

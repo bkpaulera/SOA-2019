@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 
@@ -9,9 +10,10 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-
+  
     String _nome,_email, _senha, _nomeuser, _curso, _faculdade, _skills;
     final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+    // final databaseReference = Firestore.instance;
 
     bool validateAndSave()  {
     final formState = _formKey.currentState;
@@ -36,7 +38,21 @@ class _RegisterState extends State<Register> {
       }
     }
 
+   void createRecord() async {
+    if(validateAndSave()){
+        Firestore.instance.collection('usuarios').document(_nomeuser).setData({
+          "nome": _nome,
+          "email": _email,
+          "nomeUser": _nomeuser,
+          "curso": _curso,
+          "faculdade": _faculdade,
+          "skills": _skills
+        }).then((result) => {
 
+        });
+        
+    }
+}
 
 
   @override
@@ -57,6 +73,7 @@ class _RegisterState extends State<Register> {
     final name = TextFormField(
       keyboardType: TextInputType.text,
       autofocus: false,
+      onSaved: ( value ) => _nome = value,
       decoration: InputDecoration(
         hintText: 'Nome',
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
@@ -91,6 +108,7 @@ class _RegisterState extends State<Register> {
 
     final nomeUsuario = TextFormField(
       autofocus: false,
+      onSaved: ( value ) => _nomeuser = value,
       decoration: InputDecoration(
         hintText: 'Nome de usuario',
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
@@ -100,6 +118,7 @@ class _RegisterState extends State<Register> {
 
     final curso = TextFormField(
       autofocus: false,
+      onSaved: ( value ) => _curso = value,
       decoration: InputDecoration(
         hintText: 'Curso',
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
@@ -109,6 +128,7 @@ class _RegisterState extends State<Register> {
 
     final faculdade = TextFormField(
       autofocus: false,
+      onSaved: ( value ) => _faculdade = value,
       decoration: InputDecoration(
         hintText: 'Faculdade',
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
@@ -118,6 +138,7 @@ class _RegisterState extends State<Register> {
 
     final skills = TextFormField(
       autofocus: false,
+      onSaved: ( value ) => _skills = value,
       decoration: InputDecoration(
         hintText: 'Digite aqui algumas skills',
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
@@ -131,7 +152,11 @@ class _RegisterState extends State<Register> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
         ),
-        onPressed:validateAndSubmit,
+        onPressed:(){
+          validateAndSubmit();
+          createRecord();
+
+          },
         padding: EdgeInsets.all(12),
         color: Colors.yellowAccent,
         child: Text('Cadastrar', style: TextStyle(fontSize: 18 ,color: Colors.black87)),
@@ -144,7 +169,7 @@ class _RegisterState extends State<Register> {
         key: _formKey,
         child: ListView(
           shrinkWrap: true,
-          padding: EdgeInsets.only(left: 24.0, right: 24.0),
+          padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 65),
           children: <Widget>[
             logo,
             SizedBox(height: 48.0),

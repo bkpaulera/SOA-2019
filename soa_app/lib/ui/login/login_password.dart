@@ -1,10 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Login_Password extends StatefulWidget {
   static String tag = 'forgot-page';
   @override
   _Login_PasswordState createState() => new _Login_PasswordState();
 }
+
+final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
+String _email;
+
+bool validateAndSave()  {
+    final formState = _formKey.currentState;
+    if( formState.validate()) {
+      formState.save();
+      return true;
+      }
+      return false;
+      }
+
+    void validateAndSubmit() async {
+      if(validateAndSave()){
+        try{
+        await FirebaseAuth.instance.sendPasswordResetEmail(email: _email);
+        _formKey.currentState.reset();
+        }catch(e){
+          print('Erro: $e');
+        }
+      }
+    }
+
 
 class _Login_PasswordState extends State<Login_Password> {
   @override
@@ -31,6 +58,8 @@ class _Login_PasswordState extends State<Login_Password> {
     final email = TextFormField(
       keyboardType: TextInputType.emailAddress,
       autofocus: false,
+      validator: ( value ) => value.isEmpty ? 'Email está em branco': null,
+      onSaved: ( value ) => _email = value,
       decoration: InputDecoration(
         hintText: 'Email',
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
@@ -45,18 +74,17 @@ class _Login_PasswordState extends State<Login_Password> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
         ),
-        onPressed: () {
-          // LEVAR A ALGO
-        },
+        onPressed:validateAndSubmit,
         padding: EdgeInsets.all(12),
-        color: Colors.lightBlueAccent,
-        child: Text('Enviar', style: TextStyle( fontSize: 18,color: Colors.white)),
+        color: Colors.yellow,
+        child: Text('Enviar', style: TextStyle( fontSize: 18,color: Colors.black87)),
       ),
     );
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
+      body: Form(
+        key: _formKey,
         child: ListView(
           shrinkWrap: true,
           padding: EdgeInsets.only(left: 24.0, right: 24.0),
