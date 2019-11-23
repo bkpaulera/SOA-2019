@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:soa_app/routes/routes_path.dart';
+import 'package:soa_app/ui/search/cardHeader.dart';
 
 
 class CardStudy extends StatelessWidget{
@@ -20,6 +21,7 @@ class CardStudy extends StatelessWidget{
                   Column(
                     mainAxisSize: MainAxisSize.min, 
                     children: <Widget>[
+                      CardHeader(),
                       ListTile(
                         title: Text("Como fazer um for em Flutter"),
                         subtitle: Text("Duvida em Flutter",),
