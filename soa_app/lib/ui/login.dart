@@ -36,7 +36,20 @@ class _LoginState extends State<Login> {
         }catch(e){
           print('Erro: $e');
         }
-      }
+      }else (
+        AlertDialog(
+          title: Text('Erro'),
+          actions: <Widget>[
+            MaterialButton(
+              elevation: 5.0,
+              child: Text('Voltar'),
+              onPressed: (){
+               _formKey.currentState.reset();
+              }
+            )
+          ],
+        )
+      );
     }
 
   @override
