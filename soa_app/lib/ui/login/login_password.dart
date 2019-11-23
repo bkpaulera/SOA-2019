@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:soa_app/routes.dart';
+import 'package:soa_app/routes/routes_path.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class Login_Password extends StatefulWidget {
@@ -11,6 +13,8 @@ final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
 String _email;
+
+class _Login_PasswordState extends State<Login_Password> {
 
 bool validateAndSave()  {
     final formState = _formKey.currentState;
@@ -26,6 +30,7 @@ bool validateAndSave()  {
         try{
         await FirebaseAuth.instance.sendPasswordResetEmail(email: _email);
         _formKey.currentState.reset();
+        // Navigator.of(context).pop();
         }catch(e){
           print('Erro: $e');
         }
@@ -33,7 +38,7 @@ bool validateAndSave()  {
     }
 
 
-class _Login_PasswordState extends State<Login_Password> {
+
   @override
   Widget build(BuildContext context) {
     final logo = Hero(
@@ -87,7 +92,7 @@ class _Login_PasswordState extends State<Login_Password> {
         key: _formKey,
         child: ListView(
           shrinkWrap: true,
-          padding: EdgeInsets.only(left: 24.0, right: 24.0),
+          padding: EdgeInsets.only(left: 24.0, right: 55.0),
           children: <Widget>[
             logo,
             SizedBox(height: 48.0),
