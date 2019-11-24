@@ -35,22 +35,35 @@ class _LoginState extends State<Login> {
         _formKey.currentState.reset();
         }catch(e){
           print('Erro: $e');
+          _showDialog();
+          _formKey.currentState.reset();
         }
-      }else (
-        AlertDialog(
-          title: Text('Erro'),
-          actions: <Widget>[
-            MaterialButton(
-              elevation: 5.0,
-              child: Text('Voltar'),
-              onPressed: (){
-               _formKey.currentState.reset();
-              }
-            )
-          ],
-        )
-      );
+      } 
     }
+
+
+
+    void _showDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // retorna um objeto do tipo Dialog
+        return AlertDialog(
+          content: new Text("Login ou senha não estão corretos, tente novamente"),
+          actions: <Widget>[
+            // define os botões na base do dialogo
+            new FlatButton(
+              child: new Text("Ok"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+    }
+    
 
   @override
   Widget build(BuildContext context) {
@@ -163,5 +176,5 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
+   }
   }
-}

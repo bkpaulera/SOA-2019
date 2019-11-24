@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:soa_app/routes/routes_path.dart';
+import 'package:soa_app/ui/login.dart';
 import 'package:soa_app/ui/search/create_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -12,17 +13,23 @@ class Home extends StatefulWidget {
     }) : super(key: key);
   final FirebaseUser user ;
 
-
   @override
   _HomeState createState() => _HomeState();
 }
- 
+
+final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  
+   Future <void> signOut()  async {
+    FirebaseAuth.instance.signOut();
+    }
+
+
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bem vindo ${widget.user}',style:TextStyle(color: Colors.black87),),
+        title: Text('Bem vindo ${widget.user.email}',style:TextStyle(color: Colors.black87),),
         centerTitle: true,
         backgroundColor: Colors.yellow,
         actions: <Widget>[
@@ -61,7 +68,11 @@ class _HomeState extends State<Home> {
               //CostumListTitle(Icons.find_replace, 'Pesquisar',(){Navigator.pop(context);Navigator.of(context).pushNamed(SearchView);}),
               //CostumListTitle(Icons.chat,'Conversas',(){Navigator.pop(context);Navigator.of(context).pushNamed(TalksView);}),
               //CostumListTitle(Icons.settings,'Configurações',(){Navigator.pop(context);Navigator.of(context).pushNamed(ProfileConfigView);}),
-              CostumListTitle(Icons.exit_to_app,'Deslogar',(){Navigator.pop(context);Navigator.of(context).pushNamed(LoginMainView);}),
+              CostumListTitle(Icons.exit_to_app,'Deslogar',(){
+                signOut();
+                Navigator.of(context).pushNamed(LoginMainView);
+              }
+                ),
 
             ],
           ),

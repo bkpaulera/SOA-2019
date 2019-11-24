@@ -92,7 +92,7 @@ bool validateAndSave()  {
         key: _formKey,
         child: ListView(
           shrinkWrap: true,
-          padding: EdgeInsets.only(left: 24.0, right: 55.0),
+          padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 185),
           children: <Widget>[
             logo,
             SizedBox(height: 48.0),
