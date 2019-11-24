@@ -40,7 +40,7 @@ class _RegisterState extends State<Register> {
 
    void createRecord() async {
     if(validateAndSave()){
-        Firestore.instance.collection('usuarios').document(_nomeuser).setData({
+        Firestore.instance.collection('usuarios').document(_email).setData({
           "nome": _nome,
           "email": _email,
           "nomeUser": _nomeuser,
@@ -73,6 +73,7 @@ class _RegisterState extends State<Register> {
     final name = TextFormField(
       keyboardType: TextInputType.text,
       autofocus: false,
+      validator: ( value ) => value.isEmpty ? 'Campo está em branco': null,
       onSaved: ( value ) => _nome = value,
       decoration: InputDecoration(
         hintText: 'Nome',
