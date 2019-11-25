@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:soa_app/routes/routes_path.dart';
 
 class Info_User extends StatefulWidget {
+  
   final FirebaseUser user;
   
 
@@ -14,7 +15,7 @@ class Info_User extends StatefulWidget {
 
   // In the constructor, require a Todo.
   Info_User({Key key, @required this.user}) : super(key: key);
-
+  
   @override
   _Info_UserState createState() => _Info_UserState();
 }
@@ -35,6 +36,7 @@ class _Info_UserState extends State<Info_User> {
   var _universityText = TextEditingController();
   var _skillsText = TextEditingController();
 
+  
     @override
   void dispose() {
     // Clean up the controller when the Widget is disposed
@@ -178,10 +180,11 @@ class _Info_UserState extends State<Info_User> {
                                     onPressed: (){
                                       String email = widget.user.email;
                                       Firestore.instance.collection("usuarios").document(email).delete();
+                                      widget.user.delete();
                                       if (widget.user.email != null){
                                         Navigator.of(context).pushNamed(LoginMainView);
                                       }  
-                                      //deleteuser();
+                                      
                                                                                                                
                                         
                                     },
