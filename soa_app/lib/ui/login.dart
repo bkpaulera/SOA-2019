@@ -1,8 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:soa_app/routes/routes_path.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:soa_app/ui/home.dart';
-
 
 class Login extends StatefulWidget {
   // static String tag = 'login-page';
@@ -11,8 +11,6 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-
-  
   String _email, _password;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -67,25 +65,24 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    
-
-     final logo = Hero(
+    final logo = Hero(
       tag: 'hero',
       child: CircleAvatar(
         backgroundColor: Colors.transparent,
         radius: 48.0,
         child: Image(
-          image: NetworkImage('https://images.cdn3.stockunlimited.net/preview1300/reading-book-icon_1577769.jpg'),
+          image: NetworkImage(
+              'https://images.cdn3.stockunlimited.net/preview1300/reading-book-icon_1577769.jpg'),
           width: 400,
           height: 400,
-          ),
         ),
-      );
+      ),
+    );
 
     final email = TextFormField(
       autocorrect: false,
-      validator: ( value ) => value.isEmpty ? 'Email está em branco': null,
-      onSaved: ( value ) => _email = value,
+      validator: (value) => value.isEmpty ? 'Email está em branco' : null,
+      onSaved: (value) => _email = value,
       keyboardType: TextInputType.emailAddress,
       autofocus: false,
       decoration: InputDecoration(
@@ -97,8 +94,8 @@ class _LoginState extends State<Login> {
 
     final password = TextFormField(
       autocorrect: false,
-      validator: ( value ) => value.isEmpty ? 'Senha está em branco': null,
-      onSaved: ( value ) => _password = value,
+      validator: (value) => value.isEmpty ? 'Senha está em branco' : null,
+      onSaved: (value) => _password = value,
       autofocus: false,
       obscureText: true,
       decoration: InputDecoration(
@@ -117,21 +114,23 @@ class _LoginState extends State<Login> {
         onPressed: validateAndSubmit,
         padding: EdgeInsets.all(14),
         color: Colors.yellowAccent,
-        child: Text('Login', style: TextStyle(fontSize: 18 ,color: Colors.black87)),
+        child: Text('Login',
+            style: TextStyle(fontSize: 18, color: Colors.black87)),
       ),
     );
 
     var raisedButton = RaisedButton(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
-        ),
-        onPressed: (){
-             Navigator.of(context).pushNamed(LoginRegisterView);
-        },
-        padding: EdgeInsets.all(12),
-        color: Colors.yellowAccent,
-        child: Text('Registrar', style: TextStyle(fontSize: 18 ,color: Colors.black87)),
-      );
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(24),
+      ),
+      onPressed: () {
+        Navigator.of(context).pushNamed(LoginRegisterView);
+      },
+      padding: EdgeInsets.all(12),
+      color: Colors.yellowAccent,
+      child: Text('Registrar',
+          style: TextStyle(fontSize: 18, color: Colors.black87)),
+    );
     final registerButton = Padding(
       padding: EdgeInsets.symmetric(vertical: 1.0),
       child: raisedButton,
@@ -147,7 +146,6 @@ class _LoginState extends State<Login> {
       },
     );
 
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: Form(
@@ -160,10 +158,11 @@ class _LoginState extends State<Login> {
             Text(
               "Hive Study",
               textAlign: TextAlign.center,
-              style: TextStyle(color: 
-                      Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 40.0),),
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 40.0),
+            ),
             SizedBox(height: 48.0),
             email,
             SizedBox(height: 8.0),
