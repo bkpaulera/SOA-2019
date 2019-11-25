@@ -1,26 +1,89 @@
+import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class Info_User extends StatefulWidget {
+  final FirebaseUser user;
+
+  // In the constructor, require a Todo.
+  Info_User({Key key, @required this.user}) : super(key: key);
+
   @override
   _Info_UserState createState() => _Info_UserState();
 }
 
 class _Info_UserState extends State<Info_User> {
-  TextEditingController weightController  = TextEditingController();
-  TextEditingController heightController  = TextEditingController();
+  TextEditingController weightController = TextEditingController();
+  TextEditingController heightController = TextEditingController();
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  String _infoText = "Informação dos dados";
-  
-  String _nameText = "Unip Swift";
-  String _userText = "unip777";
-  String _courseText = "Ciencia da Computação";
-  String _mailText = "unip@unip.com";
+  var _infoText = TextEditingController();
+  var _nameText = TextEditingController();
+  var _userText = TextEditingController();
+  var _courseText = TextEditingController();
+  var _mailText = TextEditingController();
+  var _universityText = TextEditingController();
+  var _skillsText = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the Widget is disposed
+    _infoText.dispose();
+    _nameText.dispose();
+    _userText.dispose();
+    _courseText.dispose();
+    _mailText.dispose();
+    _universityText.dispose();
+    _skillsText.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    getUserInformation(widget.user)
+        .then((result) => {
+              if (result.data != null)
+                {
+                  result.data.forEach((key, value) {
+                    switch (key) {
+                      case 'curso':
+                        _courseText.text = value;
+                        break;
+                      case 'email':
+                        _mailText.text = value;
+                        break;
+                      case 'faculdade':
+                        _universityText.text = value;
+                        break;
+                      case 'nome':
+                        _nameText.text = value;
+                        break;
+                      case 'nomeUser':
+                        _userText.text = value;
+                        break;
+                      case 'skills':
+                        _skillsText.text = value;
+                        break;
+                      default:
+                        print('non used value $key');
+                        break;
+                    }
+                  }),
+                }
+              else
+                {
+                  print('Error while getting profile'),
+                }
+            })
+        .catchError((err) => {print(err)});
+  }
+
   //String _passwordText = "Paulo Vinicius da Silva";
-  
+
 /*
   @override
   Widget build(BuildContext context) {
@@ -32,7 +95,7 @@ class _Info_UserState extends State<Info_User> {
           child: RaisedButton(onPressed: () {
             Navigator.pop(context);
           },
-            child: Text('Voltar'), 
+            child: Text('Voltar'),
           ),
         ),
     );
@@ -48,8 +111,7 @@ class _Info_UserState extends State<Info_User> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
-        child:
-        Form(
+        child: Form(
           key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -71,22 +133,22 @@ class _Info_UserState extends State<Info_User> {
                                 children: <Widget>[
                                   ListTile(
                                     title: Text("Nome"),
-                                    subtitle: Text(_nameText,),
+                                    subtitle: Text(_nameText.text,),
                                     contentPadding: EdgeInsets.zero,
                                   ),
                                   ListTile(
                                     title: Text(" Username"),
-                                    subtitle: Text(_userText,),
+                                    subtitle: Text(_userText.text,),
                                     contentPadding: EdgeInsets.zero,
                                   ),
                                   ListTile(
                                     title: Text(" Curso"),
-                                    subtitle: Text(_courseText,),
+                                    subtitle: Text(_courseText.text,),
                                     contentPadding: EdgeInsets.zero,
                                   ),
                                   ListTile(
                                     title: Text("E-mail"),
-                                    subtitle: Text(_mailText,),
+                                    subtitle: Text(_mailText.text,),
                                     contentPadding: EdgeInsets.zero,
                                   )
                                 ],
@@ -168,7 +230,7 @@ class _Info_UserState extends State<Info_User> {
                 ),
                 */
               Padding(
-                padding: EdgeInsets.only(top:10.0,bottom: 10),
+                padding: EdgeInsets.only(top: 10.0, bottom: 10),
                 child: Container(
                 height: 50.0
                 /*
@@ -188,5 +250,12 @@ class _Info_UserState extends State<Info_User> {
         ),
       ),
     );
+  }
+
+  Future<DocumentSnapshot> getUserInformation(FirebaseUser user) async {
+    return await Firestore.instance
+        .collection('usuarios')
+        .document(user.email)
+        .get();
   }
 }

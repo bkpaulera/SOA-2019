@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:soa_app/routes/routes_path.dart';
 import 'package:soa_app/ui/login.dart';
+import 'package:soa_app/ui/profile/info_user.dart';
 import 'package:soa_app/ui/search/create_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -9,7 +10,7 @@ class Home extends StatefulWidget {
 
   const Home({
     Key key,
-    this.user
+    @required this.user
     }) : super(key: key);
   final FirebaseUser user ;
 
@@ -22,7 +23,6 @@ final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
    Future <void> signOut()  async {
     FirebaseAuth.instance.signOut();
     }
-
 
 class _HomeState extends State<Home> {
   @override
@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
           ),
         ],
         ),
-        
+
         drawer: Drawer(
           child: ListView(
             children: <Widget>[
@@ -63,8 +63,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-              
-              CostumListTitle(Icons.person,'Perfil',(){Navigator.pop(context);Navigator.of(context).pushNamed(ProfileInfoView);}),
+              CostumListTitle(Icons.person,'Perfil',(){Navigator.pop(context);Navigator.push(context, MaterialPageRoute(builder: (context) => Info_User(user: widget.user,)));}),
               //CostumListTitle(Icons.find_replace, 'Pesquisar',(){Navigator.pop(context);Navigator.of(context).pushNamed(SearchView);}),
               //CostumListTitle(Icons.chat,'Conversas',(){Navigator.pop(context);Navigator.of(context).pushNamed(TalksView);}),
               //CostumListTitle(Icons.settings,'Configurações',(){Navigator.pop(context);Navigator.of(context).pushNamed(ProfileConfigView);}),
@@ -108,7 +107,7 @@ class CostumListTitle  extends StatelessWidget{
           child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Row(  
+              Row(
                 children: <Widget>[
                   Icon(icon),
                   Padding(
@@ -122,6 +121,6 @@ class CostumListTitle  extends StatelessWidget{
         ),
         ),
       ),
-    ); 
+    );
   }
 }
