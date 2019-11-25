@@ -4,9 +4,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:soa_app/routes/routes_path.dart';
 
 class Info_User extends StatefulWidget {
   final FirebaseUser user;
+  
+
+  
 
   // In the constructor, require a Todo.
   Info_User({Key key, @required this.user}) : super(key: key);
@@ -14,6 +18,8 @@ class Info_User extends StatefulWidget {
   @override
   _Info_UserState createState() => _Info_UserState();
 }
+
+
 
 class _Info_UserState extends State<Info_User> {
   TextEditingController weightController = TextEditingController();
@@ -29,7 +35,7 @@ class _Info_UserState extends State<Info_User> {
   var _universityText = TextEditingController();
   var _skillsText = TextEditingController();
 
-  @override
+    @override
   void dispose() {
     // Clean up the controller when the Widget is disposed
     _infoText.dispose();
@@ -40,8 +46,11 @@ class _Info_UserState extends State<Info_User> {
     _universityText.dispose();
     _skillsText.dispose();
     super.dispose();
+
+  
   }
 
+  
   @override
   void initState() {
     getUserInformation(widget.user)
@@ -163,6 +172,21 @@ class _Info_UserState extends State<Info_User> {
                                     },
                                     textColor: Colors.black,
                                     child: Text("Editar"),
+                                  ),
+                                  FlatButton(
+                                    color: Colors.amberAccent,
+                                    onPressed: (){
+                                      String email = widget.user.email;
+                                      Firestore.instance.collection("usuarios").document(email).delete();
+                                      if (widget.user.email != null){
+                                        Navigator.of(context).pushNamed(LoginMainView);
+                                      }  
+                                      //deleteuser();
+                                                                                                               
+                                        
+                                    },
+                                    textColor: Colors.black,
+                                    child: Text("Excluir Conta"),
                                   )
                                 ],
                               ),
@@ -258,4 +282,6 @@ class _Info_UserState extends State<Info_User> {
         .document(user.email)
         .get();
   }
+
+   
 }
